@@ -1,10 +1,6 @@
-# Develop your own Scratch extension
+# Contribute to Scratch Data Science
 
-- **Create your account**
-  - [Create an account on GitHub](#create-an-account-on-github)
 - **Setup your development environment**
-  - [Create your Scratch repository](#create-your-scratch-development-repository)
-  - [Go into Codespaces](#launch-codespaces)
   - [Set up repository](#set-up-your-repository)
 - **Create your extension**
   - [Create a block using live data from an online API](#create-a-block-using-live-data)
@@ -16,77 +12,19 @@
 
 ---
 
-## Create an account on GitHub
-
-_**If you already have a GitHub account, you can [skip to the next step](#create-your-scratch-development-repository).**_
-
-Go to https://github.com
-
-![screenshot](./docs/00-github.png)
-
-Click on **Sign up**
-
-![screenshot](./docs/01-github-account.png)
-
-Create your account
-
-![screenshot](./docs/02-github-username.png)
-
-Note that your GitHub **username** will be part of the web address for your modified Scratch fork, so you may want to keep that in mind when you choose your username.
-
-![screenshot](./docs/03-github-welcome.png)
-
-When you get to the **Welcome** screen, you can fill in the personalization survey if you wish, but it is okay to click on the **Skip personalization** link at the bottom of the screen if you prefer.
-
-![screenshot](./docs/04-github-ready.png)
-
-You should now have a GitHub account, ready to create your Scratch repository.
-
----
-
-## Create your Scratch development repository
-
-Go to https://github.com/dalelane/scratch-extension-development
-
-_If you aren't already logged into GitHub, you should log in now._
-
-![screenshot](./docs/10-template-repo.png)
-
-Click on **Use this template** and then choose **Create a new repository**
-
-![screenshot](./docs/11-new-repo.png)
-
-Give your new repository a name.
-
-Note that the repository name will be part of the web address for your modified Scratch fork, so you may want to keep that in mind when you choose a name.
-
-![screenshot](./docs/12-repo-name.png)
-
-Your repository is ready for use.
-
-![screenshot](./docs/13-ready-repo.png)
-
----
-
-## Launch codespaces
-
-Click on **Code** -> **Codespaces** -> **Create codespace**
-
-![screenshot](./docs/20-create-codespace.png)
-
-It can take a minute or two to set up your codespace.
-
-![screenshot](./docs/21-setting-up.png)
-
-Your codespace is ready for use.
-
-![screenshot](./docs/22-ready-codespace.png)
-
 ---
 
 ## Set up your repository
 
+Clone this repository to your local machine.
+
+```sh
+git clone https://github.com/CoderDojoThailand/DataSciBlock.git
+cd DataSciBlock
+```
+
 In the terminal at the bottom of the window, run:
+
 ```sh
 ./0-setup.sh
 ```
@@ -101,25 +39,17 @@ You only need to do this once (but it is safe if you run it again).
 
 ---
 
-## Create a block using live data
+## Code Structure
 
-**The instructions here will show you how to write an extension that can lookup the title of a book from the ISBN number, using an online API.**
+Most of the code are in `scratch3_datasci/index.js` file.
 
-The instructions will go through the template JavaScript one section at a time.
-
-Open the `your-scratch-extension/index.js` file.
-
-Review the sample extension to see the sort of options that are available to you.
-
-![screenshot](./docs/40-extension-template.png)
-
-Edit the `getInfo()` function to provide a description of your first block.
+The `getInfo()` function contains the metadata for the extension.
 
 ```js
 getInfo () {
   return {
-    // unique ID for your extension
-    id: 'yourScratchExtension',
+    // unique ID for your extension. is used to call the extension from the manager in the vm
+    id: 'datasci',
 
     // name displayed in the Scratch UI
     name: 'Demo',
@@ -185,6 +115,7 @@ Your code is now ready to test.
 ## Launch a private test of your Scratch extension
 
 In the terminal at the bottom of the window, run:
+
 ```sh
 ./2-build.sh
 ```
@@ -194,6 +125,7 @@ In the terminal at the bottom of the window, run:
 This can take a minute to run. Wait for this to complete.
 
 In the terminal at the bottom of the window, run:
+
 ```sh
 ./3-run-private.sh
 ```
@@ -231,6 +163,7 @@ If you need to make a change, stop your Scratch test by pressing **Control-C** i
 Make your code changes.
 
 Then re-build and test again by typing:
+
 ```sh
 ./2-build.sh
 ./3-run-private.sh
@@ -253,6 +186,7 @@ Select a module from https://www.npmjs.com - for this example, I'm using `syllab
 ![screenshot](./docs/80-npmjs.png)
 
 Run `./1-add-dependency.sh` with the name of the module you've selected.
+
 ```sh
 ./1-add-dependency.sh syllable
 ```
@@ -268,6 +202,7 @@ _If you want to add multiple dependencies, you can run this script multiple time
 Open the `your-scratch-extension/index.js` file again.
 
 Edit the `constructor` function to load the module.
+
 ```js
 constructor (runtime) {
   import('syllable')
@@ -355,7 +290,6 @@ mySecondBlock ({ MY_TEXT }) {
 
 ![screenshot](./docs/85-firstblock.png)
 
-
 Your code is now ready to test.
 
 As before, build your code:
@@ -425,6 +359,7 @@ Before proceeding to the next step, make sure you have stopped your private test
 ## Publish your finished extension
 
 In the terminal at the bottom of the window, run:
+
 ```sh
 ./4-publish.sh
 ```
