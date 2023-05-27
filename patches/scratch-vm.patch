@@ -8,7 +8,7 @@ index a5e2c4e..14d0acc 100644
      boost: () => require('../extensions/scratch3_boost'),
 -    gdxfor: () => require('../extensions/scratch3_gdx_for')
 +    gdxfor: () => require('../extensions/scratch3_gdx_for'),
-+    yourScratchExtension: () => require('../extensions/your-scratch-extension')
++    datasci: () => require('../extensions/scratch3_datasci')
  };
 
  /**
