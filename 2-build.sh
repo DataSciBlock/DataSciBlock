@@ -15,10 +15,26 @@ if [ -z "$SCRATCH_SRC_HOME" ]; then
     exit 1
 fi
 
-echo "BUILDING SCRATCH VM ..."
-cd $SCRATCH_SRC_HOME/scratch-vm
-npm run build
+build_vm=true
+build_gui=true
 
-echo "BUILDING SCRATCH GUI ..."
-cd $SCRATCH_SRC_HOME/scratch-gui
-npm run build
+# Loop through the positional parameters
+for arg in "$@"; do
+    if [ "$arg" = "--vm-only" ] || [ "$arg" = "-vm" ]; then
+        echo "BUILDING SCRATCH VM ONLY ..."
+        build_gui=false
+        break
+    fi
+done
+
+if [ "$build_vm" = true ]; then
+    echo "BUILDING SCRATCH VM ..."
+    cd "$SCRATCH_SRC_HOME/scratch-vm"
+    npm run build
+fi
+
+if [ "$build_gui" = true ]; then
+    echo "BUILDING SCRATCH GUI ..."
+    cd "$SCRATCH_SRC_HOME/scratch-gui"
+    npm run build
+fi
