@@ -48,7 +48,7 @@
     "btoa": "1.2.1",
     "canvas-toBlob": "1.0.0",
     "csv": "^6.3.1",
-    "dataframe-js": "^1.4.4",
+    "danfojs": "^1.1.2",
     "decode-html": "2.0.0",
     "diff-match-patch": "1.0.4",
     "format-message": "6.2.1",
