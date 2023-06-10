@@ -1,9 +1,9 @@
 [submodule "scratch-gui"]
 	path = scratch-gui
-	url = https://github.com/CoderDojoThailand/DataSciBlock-gui.git
+	url = https://github.com/DataSciBlock/DataSciBlock-gui.git
 [submodule "scratch-vm"]
 	path = scratch-vm
-	url = https://github.com/CoderDojoThailand/DataSciBlock-vm.git
+	url = https://github.com/DataSciBlock/DataSciBlock-vm.git
 [submodule "scratch-blocks"]
 	path = scratch-blocks
 	url = https://github.com/DataSciBlock/scratch-blocks.git
