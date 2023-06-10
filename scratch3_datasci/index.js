@@ -332,40 +332,44 @@ class Scratch3DataSciBlocks {
         //         },
         //     },
         // },
-        // {
-        //     opcode: "median",
-        //     blockType: BlockType.REPORTER,
-        //     text: "median of [DF] column: [COLUMN]",
-        //     terminal: false,
-        //     filter: [TargetType.SPRITE, TargetType.STAGE],
-        //     arguments: {
-        //         DF: {
-        //             type: ArgumentType.DATAFRAME,
-        //         },
-        //         COLUMN: {
-        //             defaultValue: "age",
+        {
+          opcode: "median",
+          blockType: BlockType.REPORTER,
+          text: "median of [SERIES]",
 
-        //             type: ArgumentType.STRING,
-        //         },
-        //     },
-        // },
-        // {
-        //     opcode: "sd",
-        //     blockType: BlockType.REPORTER,
-        //     text: "standard deviation of [DF] column: [COLUMN]",
-        //     terminal: false,
-        //     filter: [TargetType.SPRITE, TargetType.STAGE],
-        //     arguments: {
-        //         DF: {
-        //             type: ArgumentType.DATAFRAME,
-        //         },
-        //         COLUMN: {
-        //             defaultValue: "age",
+          // true if this block should end a stack
+          terminal: false,
 
-        //             type: ArgumentType.STRING,
-        //         },
-        //     },
-        // },
+          // where this block should be available for code - choose from:
+          //   TargetType.SPRITE - for code in sprites
+          //   TargetType.STAGE  - for code on the stage / backdrop
+          // remove one of these if this block doesn't apply to both
+          filter: [TargetType.SPRITE, TargetType.STAGE],
+          arguments: {
+            SERIES: {
+              type: ArgumentType.SERIES,
+            },
+          },
+        },
+        {
+          opcode: "sd",
+          blockType: BlockType.REPORTER,
+          text: "standard deviation of [SERIES]",
+
+          // true if this block should end a stack
+          terminal: false,
+
+          // where this block should be available for code - choose from:
+          //   TargetType.SPRITE - for code in sprites
+          //   TargetType.STAGE  - for code on the stage / backdrop
+          // remove one of these if this block doesn't apply to both
+          filter: [TargetType.SPRITE, TargetType.STAGE],
+          arguments: {
+            SERIES: {
+              type: ArgumentType.SERIES,
+            },
+          },
+        },
       ],
     };
   }
@@ -381,6 +385,7 @@ class Scratch3DataSciBlocks {
     // get csv from ../data/shark_attacks.csv
 
     const df = this._datasets[0];
+    df.print();
 
     return df.head(LINES);
   }
@@ -457,7 +462,9 @@ class Scratch3DataSciBlocks {
 
     const series = SERIES;
 
-    console.log(series.mean());
+    series.sortValues({ inplace: true });
+
+    series.print();
     return series.mean();
   }
 
@@ -469,11 +476,14 @@ class Scratch3DataSciBlocks {
    * @param {string} args.COLUMN - the column argument
    * @returns {number} the result of the block
    */
-  mode({ DF, COLUMN }) {
-    const df = DF;
-    const series = new dfd.Series(df[COLUMN].values);
+  mode({ SERIES }) {
+    // get csv from ../data/shark_attacks.csv
 
-    console.log(series.mode());
+    const series = SERIES;
+
+    series.sortValues({ inplace: true });
+
+    series.print();
     return series.mode();
   }
 
@@ -485,11 +495,15 @@ class Scratch3DataSciBlocks {
    * @param {string} args.COLUMN - the column argument
    * @returns {number} the result of the block
    */
-  median({ DF, COLUMN }) {
-    const df = DF;
-    const series = new dfd.Series(df[COLUMN].values);
+  median({ SERIES }) {
+    // get csv from ../data/shark_attacks.csv
 
-    console.log(series.median());
+    const series = SERIES;
+
+    series.sortValues({ inplace: true });
+
+    series.print();
+    return series.median();
   }
 
   /**
@@ -500,11 +514,15 @@ class Scratch3DataSciBlocks {
    * @param {string} args.COLUMN - the column argument
    * @returns {number} the result of the block
    */
-  sd({ DF, COLUMN }) {
-    const df = DF;
-    const series = new dfd.Series(df[COLUMN].values);
+  sd({ SERIES }) {
+    // get csv from ../data/shark_attacks.csv
 
-    console.log(series.std());
+    const series = SERIES;
+
+    series.sortValues({ inplace: true });
+
+    series.print();
+    return series.std();
   }
 }
 
