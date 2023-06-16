@@ -47,12 +47,14 @@ fi
 if [ "$build_vm" = true ]; then
     echo "BUILDING SCRATCH VM ..."
     cd "$SCRATCH_SRC_HOME/scratch-vm"
+    npm i
     npm run build
 fi
 
 if [ "$build_gui" = true ]; then
     echo "BUILDING SCRATCH GUI ..."
     cd "$SCRATCH_SRC_HOME/scratch-gui"
+    npm i
     npm run build
 fi
 

@@ -1,5 +1,12 @@
 #!/bin/bash
 set -e
+SCRATCH_GUI="scratch-gui"
+SCRATCH_VM="scratch-vm"
+
+if [ -d "$SCRATCH_VM" ] && [ -d "$SCRATCH_GUI" ]; then 
+    echo "setting environment variable"
+    export SCRATCH_SRC_HOME=$(pwd)
+fi
 
 echo "Verifying location of Scratch source is known"
 if [ -z "$SCRATCH_SRC_HOME" ]; then
@@ -7,11 +14,6 @@ if [ -z "$SCRATCH_SRC_HOME" ]; then
     exit 1
 fi
 
-echo "Checking that Scratch has been patched"
-if [ ! -f "$SCRATCH_SRC_HOME/patched" ]; then
-    echo "Scratch has not yet been patched. Run ./0-setup.sh"
-    exit 1
-fi
 
 # allow this script to be run from other locations, despite the
 #  relative file paths used in it
@@ -20,8 +22,7 @@ if [[ $BASH_SOURCE = */* ]]; then
 fi
 
 echo "Commit any changes"
-git add your-scratch-extension
-git add dependencies
+git add .
 git commit -m "Update"
 git push origin master
 
