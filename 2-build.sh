@@ -44,6 +44,12 @@ if [ "$build_vm" = false ] && [ "$build_gui" = false ] && [ "$build_blocks" = fa
     build_blocks=true
 fi
 
+if [ "$build_blocks" = true ]; then
+    echo "BUILDING SCRATCH BLOCKS ..."
+    cd "$SCRATCH_SRC_HOME/scratch-blocks"
+    npm i
+fi
+
 if [ "$build_vm" = true ]; then
     echo "BUILDING SCRATCH VM ..."
     cd "$SCRATCH_SRC_HOME/scratch-vm"
@@ -56,10 +62,4 @@ if [ "$build_gui" = true ]; then
     cd "$SCRATCH_SRC_HOME/scratch-gui"
     npm i
     npm run build
-fi
-
-if [ "$build_blocks" = true ]; then
-    echo "BUILDING SCRATCH BLOCKS ..."
-    cd "$SCRATCH_SRC_HOME/scratch-blocks"
-    npm i
 fi
