@@ -48,6 +48,7 @@ if [ "$build_blocks" = true ]; then
     echo "BUILDING SCRATCH BLOCKS ..."
     cd "$SCRATCH_SRC_HOME/scratch-blocks"
     npm i
+    npm link 
 fi
 
 if [ "$build_vm" = true ]; then
@@ -55,6 +56,8 @@ if [ "$build_vm" = true ]; then
     cd "$SCRATCH_SRC_HOME/scratch-vm"
     npm i
     npm run build
+    npm link scratch-blocks
+    npm link
 fi
 
 if [ "$build_gui" = true ]; then
@@ -62,4 +65,5 @@ if [ "$build_gui" = true ]; then
     cd "$SCRATCH_SRC_HOME/scratch-gui"
     npm i
     npm run build
+    npm link scratch-vm scratch-blocks
 fi

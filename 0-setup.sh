@@ -22,7 +22,7 @@ cd ..
 cd scratch-gui
 npm install
 npm link scratch-vm scratch-blocks
-cd ..
+cd .
 
 
 echo "   _______  _______________  __________"
