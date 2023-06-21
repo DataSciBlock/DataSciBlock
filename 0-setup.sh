@@ -9,6 +9,8 @@ git submodule init
 git submodule update
 
 cd scratch-blocks
+npm install google-closure-library
+ln -s $(npm root)/google-closure-library ../closure-library
 npm install
 npm link
 cd ..

@@ -21,10 +21,10 @@ if [[ $BASH_SOURCE = */* ]]; then
   cd -- "${BASH_SOURCE%/*}/" || exit
 fi
 
-echo "Commit any changes"
-git add .
-git commit -m "Update"
-git push origin master
+# echo "Commit any changes"
+# git add .
+# git commit -m "Update"
+# git push origin master
 
 echo "Building the Scratch fork"
 ./2-build.sh
