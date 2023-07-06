@@ -15,16 +15,21 @@ npm install
 npm link
 cd ..
 
+cd scratch-render
+npm install 
+npm link
+cd ..
+
 cd scratch-vm
 npm install
-npm link scratch-blocks
+npm link scratch-blocks scratch-render
 npm link
 cd ..
 
 cd scratch-gui
 npm install
-npm link scratch-vm scratch-blocks
-cd .
+npm link scratch-vm scratch-blocks scratch-render
+cd ..
 
 
 echo "   _______  _______________  __________"

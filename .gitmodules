@@ -10,3 +10,6 @@
 	path = scratch-blocks
 	url = https://github.com/DataSciBlock/scratch-blocks.git
 	branch = main
+[submodule "scratch-render"]
+	path = scratch-render
+	url = https://github.com/DataSciBlock/scratch-render
